@@ -21,7 +21,6 @@
 <script>
   
   import leftTreeMenu from '@/components/leftTreeMenu/leftTreeMenu.vue'
-  import productDetail from '@/components/productDetail/productDetail.vue'
   import containerHeader from '@/components/containerHeader/containerHeader.vue'
 
   export default {
@@ -34,7 +33,7 @@
       return {
         tableData: Array(20).fill(item),
         isCollapse: true,
-        menuWidth:"64"
+        menuWidth:"65"
       }
     },
     methods:{
@@ -47,7 +46,7 @@
           console.log('Vue:'+ data);
           this.isCollapse = data;
           if(data)
-            this.menuWidth = 64
+            this.menuWidth = 65
           else
             this.menuWidth = 200
         }
@@ -55,7 +54,6 @@
     },
     components:{
       leftTreeMenu,
-      productDetail,
       containerHeader
     }
   };
@@ -78,13 +76,7 @@
       color: #42b983;
     }
   }
-}
- .el-header {
-    background-color: #B3C0D1;
-    color: #333;
-    line-height: 60px;
-  }
-  
+} 
   .el-aside {
     color: #333;
   }

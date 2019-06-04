@@ -1,15 +1,15 @@
 <template>
-    <div>
-      <el-button @click="turnCheck" style="float:left;margin-top:10px;" size="small">=</el-button>
-      <el-dropdown>
-        <i class="el-icon-setting" style="margin-right: 15px;"></i>
+    <div style="color:#fff;">
+      <el-button @click="turnCheck" style="font-size:1em;float:left;margin-top:12px;" size="small" class="el-icon-s-fold"></el-button>
+      <el-dropdown  @command="userLogin">
+        <i class="el-icon-setting" style="margin-right: 15px;color:#fff;font-size:1em;"></i>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item>消息中心</el-dropdown-item>
           <el-dropdown-item>权限管理</el-dropdown-item>
           <el-dropdown-item>退出登录</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
-      <span>王小虎</span>
+      <span v-text="item.name"></span>
     </div>
 </template>
 
@@ -19,8 +19,8 @@
     data() {
       const item = {
         date: '2016-05-02',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
+        name: '川枫·流',
+        address: '长安胡同里'
       };
       return {
        item,
@@ -29,10 +29,42 @@
     },
     methods:{
       turnCheck:function(){
-            this.isCollapse = !this.isCollapse;
-            this.$emit("slideChange",this.isCollapse);
-            console.log(this.isCollapse);
+        this.isCollapse = !this.isCollapse;
+        this.$emit("slideChange",this.isCollapse);
+        console.log(this.isCollapse);
+      },
+      userLogin:function() {
+        const h = this.$createElement;
+        this.$msgbox({
+          title: '用户登录',
+          message: h('div', null, [
+            h('p', null, [h('span', null, '账户：'),h('input', null,)]),
+            h('p', null, [h('span', null, '密码：'),h('input', null,)]),
+          ]),
+          showCancelButton: true,
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          beforeClose: (action, instance, done) => {
+            if (action === 'confirm') {
+              instance.confirmButtonLoading = true;
+              instance.confirmButtonText = '执行中...';
+              setTimeout(() => {
+                done();
+                setTimeout(() => {
+                  instance.confirmButtonLoading = false;
+                }, 300);
+              }, 3000);
+            } else {
+              done();
+            }
           }
+        }).then(action => {
+          this.$message({
+            type: 'info',
+            message: 'action: ' + action
+          });
+        });
+      }
     },
     components:{
     }
@@ -41,7 +73,7 @@
 
 <style lang="scss">
  .el-header {
-    background-color: #B3C0D1;
+    background: rgb(83, 168, 255);
     color: #333;
     line-height: 60px;
   }
