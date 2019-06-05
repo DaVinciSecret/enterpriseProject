@@ -1,6 +1,6 @@
 <template>
     <div style="color:#fff;">
-      <el-button @click="turnCheck" style="font-size:1em;float:left;margin-top:12px;" size="small" class="el-icon-s-fold"></el-button>
+      <el-button @click="turnCheck" style="font-size:1em;float:left;margin-top:12px;font-weight:bold;background:transparent;border-color:#fff;color:#fff;" size="small" :class="checkicon" plain></el-button>
       <el-dropdown  @command="userLogin">
         <i class="el-icon-setting" style="margin-right: 15px;color:#fff;font-size:1em;"></i>
         <el-dropdown-menu slot="dropdown">
@@ -23,13 +23,15 @@
         address: '长安胡同里'
       };
       return {
-       item,
-       isCollapse:true
+        item,
+        isCollapse:true,
+        checkicon:"el-icon-s-fold"
       }
     },
     methods:{
       turnCheck:function(){
         this.isCollapse = !this.isCollapse;
+        this.checkicon = this.isCollapse ? "el-icon-s-unfold":"el-icon-s-fold";
         this.$emit("slideChange",this.isCollapse);
         console.log(this.isCollapse);
       },

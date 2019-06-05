@@ -53,24 +53,35 @@
 			    <el-table-column
 			      label="Photo"
 			      prop="photo"
-			      width="120">
+			      align="center"
+			      width="100">
 			      <img style="width:50px;height:70px;">
 			    </el-table-column>
 			    <el-table-column
 			      label="Name"
 			      prop="name"
-			      width="120">
+			      align="center"
+			      width="100">
 			    </el-table-column>
 			    <el-table-column
 			      label="date"
+			      align="center"
 			      sortable
 			      prop="date"
 			      width="120">
 			    </el-table-column>
-			     <el-table-column
+			    <el-table-column
 			      label="comment"
 			      prop="comment"
-			      width="160">
+			      align="center"
+			      width="120">
+			    </el-table-column>
+			    <el-table-column
+			      label="number"
+			      prop="number"
+			      sortable
+			      align="center"
+			      width="100">
 			    </el-table-column>
 			    <el-table-column
 			      label="IsSale"
@@ -113,7 +124,7 @@
 
 	  <div style="position:absolute;bottom:15px;left:20px;">
 	  	<el-button-group>
-		  <el-button type="danger" size="small" icon="el-icon-delete">删除资源</el-button>
+		  <el-button type="danger" size="small" icon="el-icon-delete" @click="deleteProduct">删除资源</el-button>
 		</el-button-group>
 	  </div>
 	  </el-tabs>
@@ -208,6 +219,19 @@
 	      },
 	      rowClickHander:function(row,column, event){
 	      	console.log(row,column,event)
+	      },
+	      //删除全部商品
+	      deleteProduct:function(){
+	      	 this.$Minax({
+	      	 	url:"http://localhost:3000/index/",
+				type:"post",
+				data:{name:'li'},
+				dataType:"json"
+	      	 }).then(res=>{
+	      	 	console.log('success');
+	      	 }).catch(err=>{
+	      	 	console.log('err')
+	      	 })
 	      }
 	    },
 	}

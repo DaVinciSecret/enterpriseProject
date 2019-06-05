@@ -6,10 +6,11 @@ import router from './router'
 import store from './store'
 
 import echarts from 'echarts'
-
+import {$Minax} from './$Minax.js'
 
 Vue.use(ElementUI)
 Vue.prototype.$echarts = echarts
+Vue.prototype.$Minax = $Minax
 Vue.config.productionTip = false
 
 new Vue({
