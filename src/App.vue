@@ -6,7 +6,7 @@
       </el-aside>
 
       <el-container>
-        <el-header style="text-align: right; font-size: 12px">
+        <el-header style="text-align: right; font-size: 12px; background: rgb(83, 168, 255);">
           <containerHeader @slideChange="slideChange"></containerHeader>
         </el-header>
         

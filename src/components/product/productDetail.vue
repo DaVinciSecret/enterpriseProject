@@ -1,5 +1,10 @@
 <template>
 	<div class="tableContainer">
+	<el-breadcrumb separator-class="el-icon-arrow-right" style="margin-bottom:20px;">
+	  <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+	  <el-breadcrumb-item :to="{ path: '/product'}">商品</el-breadcrumb-item>
+	  <el-breadcrumb-item>商品详情</el-breadcrumb-item>
+	</el-breadcrumb>
 	  <el-tabs type="border-card" left>
 		  <el-tab-pane label="用户管理">
 		  <!--表格过滤条件-->

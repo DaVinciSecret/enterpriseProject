@@ -25,13 +25,13 @@
       return {
         item,
         isCollapse:true,
-        checkicon:"el-icon-s-fold"
+        checkicon:"el-icon-d-arrow-right"
       }
     },
     methods:{
       turnCheck:function(){
         this.isCollapse = !this.isCollapse;
-        this.checkicon = this.isCollapse ? "el-icon-s-unfold":"el-icon-s-fold";
+        this.checkicon = this.isCollapse ? "el-icon-d-arrow-right":"el-icon-d-arrow-left";
         this.$emit("slideChange",this.isCollapse);
         console.log(this.isCollapse);
       },
@@ -73,9 +73,8 @@
   };
 </script>
 
-<style lang="scss">
+<style scope>
  .el-header {
-    background: rgb(83, 168, 255);
     color: #333;
     line-height: 60px;
   }

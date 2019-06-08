@@ -32,7 +32,7 @@
 		</el-row>  
 	  </div>
 	  <el-row style="border-bottom:1px solid #E4E7ED">
-	  	<div id="myChart" :style="{width: '1200px', height: '300px'}"></div>
+	  	<div id="myChart" :style="{width: '1200px', height: '300px',margin:'10px auto',}"></div>
 	  </el-row>
 	  <el-footer style="height:auto;">
 	  	<el-row :gutter="20">
@@ -135,6 +135,10 @@
 			        splitLine: {
 			            show: false
 			        },
+					minInterval:1,
+			        axisTick: {
+			        interval:0,
+			        },
 			        axisLine: {
 	                    lineStyle: {
 	                        type: 'solid',
@@ -145,7 +149,6 @@
 	                axisLabel: {
 	                    textStyle: {
 	                        color: '#fff',//坐标值得具体的颜色
-	 
 	                    }
 	                }
 			    },
@@ -202,7 +205,7 @@
 	}
 </script>
 
-<style>
+<style scope>
 .el-row {
     margin-bottom: 10px;
     &:last-child {
