@@ -1,12 +1,18 @@
 <template>
 <div>
   <el-row>
-    <el-col :span="24">
+    <el-col :span="8">
 	  <el-breadcrumb separator-class="el-icon-arrow-right">
 	    <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
 	    <el-breadcrumb-item>商品管理</el-breadcrumb-item>
 	    <el-breadcrumb-item>商品列表</el-breadcrumb-item>
 	  </el-breadcrumb>
+    </el-col>
+    <el-col :span="4"><div class="grid-content bg-purple-light"></div></el-col>
+	<el-col :span="4"><div class="grid-content bg-purple"></div></el-col>
+    <el-col :span="8"  align="right">
+      <el-button type="primary" size="small">导出</el-button>
+      <el-button type="danger" size="small" @click="addProductFormCheck">新建</el-button>
     </el-col>
   </el-row>
 
@@ -46,20 +52,32 @@
 		@next-click="hanleNext"
 		>
 	  </el-pagination>
+	  <addProductForm @flagChange="flagChange" :dialogVisible="dialogVisible"></addProductForm>
 	</el-row>
   </el-main>
   </div>
 </template>
 
 <script>
+import addProductForm from '@/components/product/addProductForm.vue'
+
 export default{
 	name:'productManage',
 	data:function(){
 		return {
-			currentDate: new Date()
+			currentDate: new Date(),
+			dialogVisible:false
 		}
 	},
 	methods:{
+		flagChange:function(data){
+			console.log(data)
+			this.dialogVisible = data;
+		},
+		addProductFormCheck:function(){
+			this.dialogVisible = !this.dialogVisible;
+			console.log(this.dialogVisible);
+		},
 		//当前页码
 		handleChange:function(val){
 		  console.log("点击当前"+val)
@@ -71,7 +89,9 @@ export default{
 		hanleNext:function(val){
 		  console.log("点击下一页"+val)
 		}
-
+	},
+	components:{
+		addProductForm
 	}
 
 }
