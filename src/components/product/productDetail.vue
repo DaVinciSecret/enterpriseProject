@@ -46,7 +46,8 @@
 			<el-row>
 				<div style="height:20px;background: rgb(244, 244, 245);"></div>
 			</el-row>
-
+			<el-row>
+			<el-col :span="24">
 			<!--商品表格-->
 			<el-table width="100%" @select-all="selectAll" @select="tableSelect" @row-click="rowClickHander"
 			    :data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
@@ -111,9 +112,21 @@
 			          @click="handleDelete(scope.$index, scope.row)"></el-button>
 			      </template>
 			    </el-table-column>
-			  </el-table>
-		  </el-tab-pane>
+			    </el-table>
+			   </el-col>
+			 </el-row>
+			 <el-row>
+			  	<el-col :span="24" align="left">
+				  <div style="">
+				  	<el-button-group>
+					  <el-button type="danger" size="small" icon="el-icon-delete" @click="deleteProduct">删除资源</el-button>
+					</el-button-group>
+				  </div>
+			  	</el-col>
+			 </el-row>
 
+		  </el-tab-pane>
+	  
 	  <el-tab-pane label="配置管理">配置管理</el-tab-pane>
 	  <el-tab-pane label="角色管理">角色管理</el-tab-pane>
 	  <router-view></router-view>
@@ -125,12 +138,6 @@
 	    	layout="prev, pager, next"
 	    	:total="tableData.length">
 	  	</el-pagination>
-	  </div>
-
-	  <div style="position:absolute;bottom:15px;left:20px;">
-	  	<el-button-group>
-		  <el-button type="danger" size="small" icon="el-icon-delete" @click="deleteProduct">删除资源</el-button>
-		</el-button-group>
 	  </div>
 	  </el-tabs>
 	</div>

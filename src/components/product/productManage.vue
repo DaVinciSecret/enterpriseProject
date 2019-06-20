@@ -17,11 +17,19 @@
   </el-row>
 
   <el-main>
-  <el-row :gutter="12">
-	  <el-col :span="6" v-for="iten in 6" >
+  	<el-row :gutter="12">
+  	  <el-col :span="24" align="right">
+  		<el-button-group >
+		  <el-button @click="showModel('card')" style="font-size:1em;" icon="el-icon-bank-card" size="small"></el-button>
+		  <el-button @click="showModel('table')" style="font-size:1em;" icon="el-icon-document" size="small"></el-button>
+		</el-button-group>
+	  </el-col>
+  	</el-row>
+    <el-row :gutter="12" v-if="isCard">
+	  <el-col :span="6" v-for="product in tableData" >
 	    <el-card shadow="hover" style="min-height:240px;margin-bottom:12px;">
 	      <div slot="header" style="text-align:left;" class="clearfix">
-		    <span>标题</span>
+		    <span>{{product.city}}</span>
 		    <el-button style="float: right; padding: 3px 0" type="text">
 		    	<el-dropdown size="medium">
 				  <span class="el-dropdown-link">
@@ -38,9 +46,57 @@
 		  <div v-for="o in 4" :key="o" class="text item">
 		    {{'列表内容 ' + o }}
 		  </div>
-	      
 	    </el-card>
 	  </el-col>
+	</el-row>
+	<el-row :gutter="12" v-else="isCard">
+	 <el-col :span="24">
+	  <el-table
+	    :data="tableData"
+	    border
+	    style="width: 100%">
+	    <el-table-column
+	      fixed
+	      prop="date"
+	      label="日期"
+	      width="150">
+	    </el-table-column>
+	    <el-table-column
+	      prop="name"
+	      label="姓名"
+	      width="120">
+	    </el-table-column>
+	    <el-table-column
+	      prop="province"
+	      label="省份"
+	      width="120">
+	    </el-table-column>
+	    <el-table-column
+	      prop="city"
+	      label="市区"
+	      width="120">
+	    </el-table-column>
+	    <el-table-column
+	      prop="address"
+	      label="地址"
+	      width="300">
+	    </el-table-column>
+	    <el-table-column
+	      prop="zip"
+	      label="邮编"
+	      width="120">
+	    </el-table-column>
+	    <el-table-column
+	      fixed="right"
+	      label="操作"
+	      width="120">
+	      <template slot-scope="scope">
+	        <el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button>
+	        <el-button type="text" size="small">编辑</el-button>
+	      </template>
+	    </el-table-column>
+	    </el-table>
+	   </el-col>
 	</el-row>
 	<el-row>
 	  <el-pagination
@@ -66,7 +122,51 @@ export default{
 	data:function(){
 		return {
 			currentDate: new Date(),
-			dialogVisible:false
+			dialogVisible:false,
+			isCard:true,
+			tableData: [{
+	          date: '2016-05-02',
+	          name: '王小虎',
+	          province: '上海',
+	          city: '普陀区',
+	          address: '上海市普陀区金沙江路 1518 弄',
+	          zip: 200333
+	        }, {
+	          date: '2016-05-04',
+	          name: '王小虎',
+	          province: '上海',
+	          city: '普陀区',
+	          address: '上海市普陀区金沙江路 1517 弄',
+	          zip: 200333
+	        }, {
+	          date: '2016-05-01',
+	          name: '王小虎',
+	          province: '上海',
+	          city: '普陀区',
+	          address: '上海市普陀区金沙江路 1519 弄',
+	          zip: 200333
+	        }, {
+	          date: '2016-05-03',
+	          name: '王小虎',
+	          province: '上海',
+	          city: '普陀区',
+	          address: '上海市普陀区金沙江路 1516 弄',
+	          zip: 200333
+	        }, {
+	          date: '2016-05-08',
+	          name: '王小虎',
+	          province: '上海',
+	          city: '普陀区',
+	          address: '上海市普陀区金沙江路 1516 弄',
+	          zip: 200333
+	        }, {
+	          date: '2016-05-10',
+	          name: '王小虎',
+	          province: '上海',
+	          city: '普陀区',
+	          address: '上海市普陀区金沙江路 1516 弄',
+	          zip: 200333
+	        }]
 		}
 	},
 	methods:{
@@ -88,6 +188,15 @@ export default{
 		},
 		hanleNext:function(val){
 		  console.log("点击下一页"+val)
+		},
+		showModel:function(e){
+		console.log(e);
+			if(e === "table"){
+				this.isCard = false;
+			}else{
+				this.isCard = true;
+			}
+			
 		}
 	},
 	components:{
