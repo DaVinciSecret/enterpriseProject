@@ -34,6 +34,30 @@
 	  <el-row style="border-bottom:1px solid #E4E7ED">
 	  	<div id="myChart" :style="{width: '1200px', height: '300px',margin:'10px auto',}"></div>
 	  </el-row>
+	  <el-row style="height:160px;line-height:160px;">
+	  	<el-col :span="12">
+	  		<el-col :span="10">
+	  			<el-progress style="margin-top:10px;" type="dashboard" :percentage="10" :color="colors"></el-progress>
+	  		</el-col>
+	  		<el-col :span="14" align="left">
+				<el-progress style="margin:15px 0;width:260px;" :percentage="40" :color="customColor"></el-progress>
+				<el-progress style="margin:15px 0;width:260px;" :percentage="60" :color="customColorMethod"></el-progress>
+				<el-progress style="margin:15px 0;width:260px;" :percentage="80" :color="customColors"></el-progress>
+				<el-progress style="margin:15px 0;width:260px;" :percentage="60" :color="customColorMethod"></el-progress>
+	  		</el-col>
+	  	</el-col>
+	  	<el-col :span="12">
+	  		<el-col :span="10">
+	  			<el-progress style="margin-top:10px;" type="dashboard" :percentage="70" :color="colors"></el-progress>
+	  		</el-col>
+	  		<el-col :span="14" align="left">
+				<el-progress style="margin:15px 0;width:260px;" :percentage="40" :color="customColor"></el-progress>
+				<el-progress style="margin:15px 0;width:260px;" :percentage="60" :color="customColorMethod"></el-progress>
+				<el-progress style="margin:15px 0;width:260px;" :percentage="80" :color="customColors"></el-progress>
+				<el-progress style="margin:15px 0;width:260px;" :percentage="60" :color="customColorMethod"></el-progress>
+	  		</el-col>
+	  	</el-col>
+	  </el-row>
 	  <el-footer style="height:auto;">
 	  	<el-row :gutter="20">
 		  <el-col :span="8" style="height:150px;line-height:150px;font-size:20px;">
@@ -67,7 +91,23 @@
           data:[],
 		  now : +new Date(1997, 9, 3),
 		  oneDay : 24 * 3600 * 1000,
-		  value: Math.random() * 1000
+		  value: Math.random() * 1000,
+		  customColor: '#409eff',
+          customColors: [
+            {color: '#f56c6c', percentage: 20},
+            {color: '#e6a23c', percentage: 40},
+            {color: '#5cb87a', percentage: 60},
+            {color: '#1989fa', percentage: 80},
+            {color: '#6f7ad3', percentage: 100}
+          ],
+          colors: [
+          {color: '#f56c6c', percentage: 20},
+          {color: '#e6a23c', percentage: 40},
+          {color: '#5cb87a', percentage: 60},
+          {color: '#1989fa', percentage: 80},
+          {color: '#6f7ad3', percentage: 100}
+        ]
+
 	  	}
 	  },
 	  mounted:function(){
@@ -78,6 +118,28 @@
 	  	this.drawLine();
 	  },
 	  methods:{
+	  		customColorMethod(percentage) {
+		        if (percentage < 30) {
+		          return '#909399';
+		        } else if (percentage < 70) {
+		          return '#e6a23c';
+		        } else {
+		          return '#67c23a';
+		        }
+		      },
+		      increase() {
+		        this.percentage += 10;
+		        if (this.percentage > 100) {
+		          this.percentage = 100;
+		        }
+		      },
+		      decrease() {
+		        this.percentage -= 10;
+		        if (this.percentage < 0) {
+		          this.percentage = 0;
+		        }
+		      },
+
 	  	    //随机数据
 	        randomData(){
 			    this.now = new Date(+this.now + this.oneDay);

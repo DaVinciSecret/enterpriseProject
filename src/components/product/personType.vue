@@ -8,6 +8,7 @@
 	  	</el-tooltip>
 	  </el-col>
 	  <el-col :span="12" align="right">
+	    <el-button size="large" type="primary" @click="addPersonFormCheck">添加成员</el-button>
 	  	<el-button size="large" type="danger">导出成员</el-button>
 	  </el-col>
 	</el-row>
@@ -124,16 +125,20 @@
     	layout="prev, pager, next"
     	:total="10">
   	</el-pagination>
+  	<addPersonForm @flagChange="flagChange" :dialogVisible="dialogVisible"></addPersonForm>
   	</el-col>
   </el-row>
   </div>
 </template>
 
 <script>
+import addPersonForm from '@/components/product/addPersonForm.vue'
+
 export default{
 	name:'personType',
 	data:function(){
 		return {
+			dialogVisible:false,
 		    tableData: [{
 	          date: '2016-05-02',
 	          type: 'type1',
@@ -175,6 +180,14 @@ export default{
       handleDelete(index, row) {
         console.log(index, row);
       },
+      flagChange:function(data){
+		console.log(data)
+		this.dialogVisible = data;
+	  },
+      addPersonFormCheck:function(){
+		this.dialogVisible = !this.dialogVisible;
+		console.log(this.dialogVisible);
+	  },
       toggleSelection(rows) {
         if (rows) {
           rows.forEach(row => {
@@ -187,6 +200,9 @@ export default{
       handleSelectionChange(val) {
         this.multipleSelection = val;
       }
+	},
+	components:{
+		addPersonForm
 	}
 
 }
