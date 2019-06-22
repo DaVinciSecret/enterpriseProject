@@ -34,10 +34,12 @@
 	  <el-row style="border-bottom:1px solid #E4E7ED">
 	  	<div id="myChart" :style="{width: '1200px', height: '300px',margin:'10px auto',}"></div>
 	  </el-row>
-	  <el-row style="height:160px;line-height:160px;">
-	  	<el-col :span="12">
+	  <el-row style="min-height:120px;">
+	  	<el-col :span="12" style="margin-bottom:20px;">
 	  		<el-col :span="10">
-	  			<el-progress style="margin-top:10px;" type="dashboard" :percentage="10" :color="colors"></el-progress>
+	  			<el-progress style="margin-top:10px;" type="dashboard" :percentage="90" :color="colors" :format="format">
+	  			</el-progress>
+	  			<p style="margin:0;margin-top:-10px;height:16px;line-height:16px;">name1</p>
 	  		</el-col>
 	  		<el-col :span="14" align="left">
 				<el-progress style="margin:15px 0;width:260px;" :percentage="40" :color="customColor"></el-progress>
@@ -46,9 +48,37 @@
 				<el-progress style="margin:15px 0;width:260px;" :percentage="60" :color="customColorMethod"></el-progress>
 	  		</el-col>
 	  	</el-col>
-	  	<el-col :span="12">
+	  	<el-col :span="12"  style="margin-bottom:20px;">
 	  		<el-col :span="10">
-	  			<el-progress style="margin-top:10px;" type="dashboard" :percentage="70" :color="colors"></el-progress>
+	  			<el-progress style="margin-top:10px;" type="dashboard" :percentage="30" :color="colors" :format="format">
+	  			</el-progress>
+	  			<p style="margin:0;margin-top:-10px;height:16px;line-height:16px;">name1</p>
+	  		</el-col>
+	  		<el-col :span="14" align="left">
+				<el-progress style="margin:15px 0;width:260px;" :percentage="40" :color="customColor"></el-progress>
+				<el-progress style="margin:15px 0;width:260px;" :percentage="60" :color="customColorMethod"></el-progress>
+				<el-progress style="margin:15px 0;width:260px;" :percentage="80" :color="customColors"></el-progress>
+				<el-progress style="margin:15px 0;width:260px;" :percentage="60" :color="customColorMethod"></el-progress>
+	  		</el-col>
+	  	</el-col>
+	  	<el-col :span="12"  style="margin-bottom:20px;">
+	  		<el-col :span="10">
+	  			<el-progress style="margin-top:10px;" type="dashboard" :percentage="10" :color="colors" :format="format">
+	  			</el-progress>
+	  			<p style="margin:0;margin-top:-10px;height:16px;line-height:16px;">name1</p>
+	  		</el-col>
+	  		<el-col :span="14" align="left">
+				<el-progress style="margin:15px 0;width:260px;" :percentage="40" :color="customColor"></el-progress>
+				<el-progress style="margin:15px 0;width:260px;" :percentage="60" :color="customColorMethod"></el-progress>
+				<el-progress style="margin:15px 0;width:260px;" :percentage="80" :color="customColors"></el-progress>
+				<el-progress style="margin:15px 0;width:260px;" :percentage="60" :color="customColorMethod"></el-progress>
+	  		</el-col>
+	  	</el-col>
+	  	<el-col :span="12"  style="margin-bottom:20px;">
+	  		<el-col :span="10">
+	  			<el-progress style="margin-top:10px;" type="dashboard" :percentage="40" :color="colors" :format="format">
+	  			</el-progress>
+	  			<p style="margin:0;margin-top:-10px;height:16px;line-height:16px;">name1</p>
 	  		</el-col>
 	  		<el-col :span="14" align="left">
 				<el-progress style="margin:15px 0;width:260px;" :percentage="40" :color="customColor"></el-progress>
@@ -60,7 +90,8 @@
 	  </el-row>
 	  <el-footer style="height:auto;">
 	  	<el-row :gutter="20">
-		  <el-col :span="8" style="height:150px;line-height:150px;font-size:20px;">
+		  <el-col :span="8" style="height:150px;line-height:150px;>
+font-size:20px;">
 		    <div class="grid-content bg-purple">
 		    	<span>onLine:</span><span>124314</span>
 		    </div>
@@ -118,6 +149,9 @@
 	  	this.drawLine();
 	  },
 	  methods:{
+		   format(percentage) {
+	        return percentage === 100 ? '满' : `${percentage}%`;
+	      },
 	  		customColorMethod(percentage) {
 		        if (percentage < 30) {
 		          return '#909399';

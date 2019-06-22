@@ -4,7 +4,7 @@
       <el-dropdown  @command="userLogin">
         <i class="el-icon-setting" style="margin-right: 15px;color:#fff;font-size:1em;"></i>
         <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item>消息中心</el-dropdown-item>
+          <el-dropdown-item><el-badge is-dot class="item">消息中心</el-badge></el-dropdown-item>
           <el-dropdown-item>权限管理</el-dropdown-item>
           <el-dropdown-item>退出登录</el-dropdown-item>
         </el-dropdown-menu>

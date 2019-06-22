@@ -52,7 +52,7 @@
 </template>
 <script>
 	export default{
-		name: 'accountOperate',
+		name: 'addAccount',
 	    data() {
 	      return {
 	        ruleForm: {

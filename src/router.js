@@ -10,6 +10,8 @@ import productManage from './components/product/productManage.vue'
 import productType from './components/product/productType.vue'
 import personType from './components/product/personType.vue'
 import product from './components/product/product.vue'
+//other
+import other from './components/other/otherPage.vue'
 
 Vue.use(Router)
 
@@ -53,8 +55,18 @@ export default new Router({
       component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
     },{
       path: '/account',
-      name: 'accountOperate',
-      component: () => import(/* webpackChunkName: "about" */ './components/accountOperate/accountOperate.vue')
-    }
+      name: 'accountList',
+      component: () => import(/* webpackChunkName: "about" */ './components/accountOperate/accountList.vue')
+    },
+    {
+      path: '/addAccount',
+      name: 'addAccount',
+      component: () => import(/* webpackChunkName: "about" */ './components/accountOperate/addAccount.vue')
+    },
+    {
+      path: '/other',
+      name: 'otherPage',
+      component:other
+    },
   ]
 })

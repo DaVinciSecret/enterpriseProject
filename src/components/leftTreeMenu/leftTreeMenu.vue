@@ -35,8 +35,8 @@
         <span><router-link to="/account">账户信息</router-link></span>
       </el-menu-item>
       <el-menu-item index="5">
-        <i class="el-icon-s-grid"></i>
-        <span>MenuItem</span>
+        <i class="el-icon-s-grid" data-name="other" @click="linkTo($event)"></i>
+        <span><router-link to="/other">menuItem</router-link></span>
       </el-menu-item>
    </el-menu>
 </template>
