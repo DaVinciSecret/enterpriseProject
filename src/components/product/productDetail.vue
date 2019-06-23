@@ -217,7 +217,7 @@
 	    methods: {
 	      handleEdit(index, row) {
 	        console.log(index, row);
-	        this.$router.push('',{});
+	        this.$router.push({name:'productEdit',params:{}});
 	      },
 	      handleDelete(index, row) {
 	        console.log(index, row);

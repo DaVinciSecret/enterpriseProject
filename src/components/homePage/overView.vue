@@ -35,56 +35,17 @@
 	  	<div id="myChart" :style="{width: '1200px', height: '300px',margin:'10px auto',}"></div>
 	  </el-row>
 	  <el-row style="min-height:120px;">
-	  	<el-col :span="12" style="margin-bottom:20px;">
+	  	<el-col :span="12" style="margin-bottom:20px;" v-for="item in tableBarData">
 	  		<el-col :span="10">
-	  			<el-progress style="margin-top:10px;" type="dashboard" :percentage="90" :color="colors" :format="format">
+	  			<el-progress style="margin-top:10px;" type="dashboard" :percentage="item.total" :color="colors" :format="format">
 	  			</el-progress>
-	  			<p style="margin:0;margin-top:-10px;height:16px;line-height:16px;">name1</p>
+	  			<p style="margin:0;margin-top:-10px;height:16px;line-height:16px;">{{item.name}}</p>
 	  		</el-col>
 	  		<el-col :span="14" align="left">
-				<el-progress style="margin:15px 0;width:260px;" :percentage="40" :color="customColor"></el-progress>
-				<el-progress style="margin:15px 0;width:260px;" :percentage="60" :color="customColorMethod"></el-progress>
-				<el-progress style="margin:15px 0;width:260px;" :percentage="80" :color="customColors"></el-progress>
-				<el-progress style="margin:15px 0;width:260px;" :percentage="60" :color="customColorMethod"></el-progress>
-	  		</el-col>
-	  	</el-col>
-	  	<el-col :span="12"  style="margin-bottom:20px;">
-	  		<el-col :span="10">
-	  			<el-progress style="margin-top:10px;" type="dashboard" :percentage="30" :color="colors" :format="format">
-	  			</el-progress>
-	  			<p style="margin:0;margin-top:-10px;height:16px;line-height:16px;">name1</p>
-	  		</el-col>
-	  		<el-col :span="14" align="left">
-				<el-progress style="margin:15px 0;width:260px;" :percentage="40" :color="customColor"></el-progress>
-				<el-progress style="margin:15px 0;width:260px;" :percentage="60" :color="customColorMethod"></el-progress>
-				<el-progress style="margin:15px 0;width:260px;" :percentage="80" :color="customColors"></el-progress>
-				<el-progress style="margin:15px 0;width:260px;" :percentage="60" :color="customColorMethod"></el-progress>
-	  		</el-col>
-	  	</el-col>
-	  	<el-col :span="12"  style="margin-bottom:20px;">
-	  		<el-col :span="10">
-	  			<el-progress style="margin-top:10px;" type="dashboard" :percentage="10" :color="colors" :format="format">
-	  			</el-progress>
-	  			<p style="margin:0;margin-top:-10px;height:16px;line-height:16px;">name1</p>
-	  		</el-col>
-	  		<el-col :span="14" align="left">
-				<el-progress style="margin:15px 0;width:260px;" :percentage="40" :color="customColor"></el-progress>
-				<el-progress style="margin:15px 0;width:260px;" :percentage="60" :color="customColorMethod"></el-progress>
-				<el-progress style="margin:15px 0;width:260px;" :percentage="80" :color="customColors"></el-progress>
-				<el-progress style="margin:15px 0;width:260px;" :percentage="60" :color="customColorMethod"></el-progress>
-	  		</el-col>
-	  	</el-col>
-	  	<el-col :span="12"  style="margin-bottom:20px;">
-	  		<el-col :span="10">
-	  			<el-progress style="margin-top:10px;" type="dashboard" :percentage="40" :color="colors" :format="format">
-	  			</el-progress>
-	  			<p style="margin:0;margin-top:-10px;height:16px;line-height:16px;">name1</p>
-	  		</el-col>
-	  		<el-col :span="14" align="left">
-				<el-progress style="margin:15px 0;width:260px;" :percentage="40" :color="customColor"></el-progress>
-				<el-progress style="margin:15px 0;width:260px;" :percentage="60" :color="customColorMethod"></el-progress>
-				<el-progress style="margin:15px 0;width:260px;" :percentage="80" :color="customColors"></el-progress>
-				<el-progress style="margin:15px 0;width:260px;" :percentage="60" :color="customColorMethod"></el-progress>
+				<el-progress style="margin:15px 0;width:260px;" :percentage="item.barData1" :color="customColor"></el-progress>
+				<el-progress style="margin:15px 0;width:260px;" :percentage="item.barData2" :color="customColorMethod"></el-progress>
+				<el-progress style="margin:15px 0;width:260px;" :percentage="item.barData3" :color="customColors"></el-progress>
+				<el-progress style="margin:15px 0;width:260px;" :percentage="item.barData4" :color="customColorMethod"></el-progress>
 	  		</el-col>
 	  	</el-col>
 	  </el-row>
@@ -137,6 +98,40 @@ font-size:20px;">
           {color: '#5cb87a', percentage: 60},
           {color: '#1989fa', percentage: 80},
           {color: '#6f7ad3', percentage: 100}
+        ],
+        tableBarData:[
+        	{
+        	  name:'性能',
+  			  total:60,
+  			  barData1:10,
+  			  barData2:20,
+  			  barData3:20,
+  			  barData4:10,
+        	},
+        	{
+        	  name:'内存',
+  			  total:35,
+  			  barData1:10,
+  			  barData2:0,
+  			  barData3:5,
+  			  barData4:20,
+        	},
+        	{
+        	  name:'CPU负载',
+  			  total:50,
+  			  barData1:10,
+  			  barData2:10,
+  			  barData3:20,
+  			  barData4:10,
+        	},
+        	{
+        	  name:'内存负载',
+  			  total:85,
+  			  barData1:50,
+  			  barData2:15,
+  			  barData3:30,
+  			  barData4:45,
+        	},
         ]
 
 	  	}

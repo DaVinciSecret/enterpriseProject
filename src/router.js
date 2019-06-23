@@ -8,6 +8,7 @@ import overView from './components/homePage/overView.vue'
 import productDetail from './components/product/productDetail.vue'
 import productManage from './components/product/productManage.vue'
 import productType from './components/product/productType.vue'
+import productEdit from './components/product/productEdit.vue'
 import personType from './components/product/personType.vue'
 import product from './components/product/product.vue'
 //other
@@ -42,6 +43,10 @@ export default new Router({
         },{
           path:'personType',
           component:personType
+        },{
+          path:'productEdit',
+          name:'productEdit',
+          component:productEdit
         },
       ],
       redirect:'/product/productDetail'
